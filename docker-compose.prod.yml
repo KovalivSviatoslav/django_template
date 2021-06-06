@@ -3,21 +3,38 @@ version: "3.9"
 
 services:
   app_postgres:
+    container_name: app_postgres
     build:
       context: ./docker/postgres
       dockerfile: Dockerfile
-    entrypoint:
-      - POSTGRES_PASSWROD=app_pass
+    environment:
+      - POSTGRES_PASSWORD=app_pass
     volumes:
-    - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
-    - "7001:5432"
+      - "7001:5432"
 
-  app_backend:
+  backend:
+    container_name: app_backend
     build:
       context: ./backend
       dockerfile: Dockerfile
     volumes:
-    - ./backend:/usr/src/backend
+      - ./backend:/usr/src/backend
     depends_on:
       - app_postgres
+    ports:
+      - "7000:7000"
+
+  app_nginx:
+    container_name: app_nginx
+    build:
+      context: ./docker/nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+      - app_postgres
+    volumes:
+      - ./backend/static/:/static
+    ports:
+      - "80:80"
