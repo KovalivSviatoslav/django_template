@@ -1,0 +1,23 @@
+version: "3.9"
+
+
+services:
+  app_postgres:
+    build:
+      context: ./docker/postgres
+      dockerfile: Dockerfile
+    entrypoint:
+      - POSTGRES_PASSWROD=app_pass
+    volumes:
+    - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+    - "7001:5432"
+
+  app_backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    volumes:
+    - ./backend:/usr/src/backend
+    depends_on:
+      - app_postgres
