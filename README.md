@@ -1,3 +1,18 @@
+## Technologies
+ - Python 3.9.5
+ - Poetry 1.1.6
+ - Django 3.2.4
+ - DRF 3.12.4
+ - gunicorn 20.1.0
+ - Docker 20.10.7
+ - Docker Compose 1.29.2
+ - Postgres 13.3
+ - NGINX 1.21.0
+ 
+## START THE TEMPLATE
+ - install "Docker" and "Docker Compose"
+ - docker-compose -f docker-compose.prod.yml up -d --build
+
 
 ## GIT STYLE
 ### Branch sample:
