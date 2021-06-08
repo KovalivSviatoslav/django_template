@@ -13,3 +13,4 @@ Thumbs.db
 .env
 ### Project ###
 backend/staticfiles/*
+todo.txt
