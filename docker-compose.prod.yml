@@ -11,6 +11,8 @@ services:
       - POSTGRES_PASSWORD=app_pass
     volumes:
       - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app_network
     ports:
       - "7001:5432"
 
@@ -23,6 +25,8 @@ services:
       - ./backend:/usr/src/backend
     depends_on:
       - app_postgres
+    networks:
+      - app_network
     ports:
       - "7000:7000"
 
@@ -31,10 +35,16 @@ services:
     build:
       context: ./docker/nginx
       dockerfile: Dockerfile
+    volumes:
+      - ./backend/staticfiles/:/staticfiles
     depends_on:
       - backend
       - app_postgres
-    volumes:
-      - ./backend/static/:/static
+    networks:
+      - app_network
     ports:
       - "80:80"
+
+
+networks:
+  app_network:
