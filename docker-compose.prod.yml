@@ -4,13 +4,11 @@ version: "3.9"
 services:
   app_postgres:
     container_name: app_postgres
-    build:
-      context: ./docker/postgres
-      dockerfile: Dockerfile
-    environment:
-      - POSTGRES_PASSWORD=app_pass
+    image: postgres
+    env_file:
+      - ./env_files/prod.env
     volumes:
-      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db_data:/var/lib/postgresql/data
     networks:
       - app_network
     ports:
@@ -21,6 +19,8 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    env_file:
+      - ./env_files/prod.env
     volumes:
       - ./backend:/usr/src/backend
     depends_on:

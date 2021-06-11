@@ -10,7 +10,8 @@ Thumbs.db
 ### PyCharm ###
 .idea
 ### Environments ###
-.env
+*.env
 ### Project ###
 backend/staticfiles/*
+db_data
 todo.txt
