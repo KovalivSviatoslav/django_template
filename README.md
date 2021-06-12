@@ -9,7 +9,7 @@
  - Postgres 13.3
  - NGINX 1.21.0
  
-## START THE TEMPLATE
+## RUN THE PROJECT TEMPLATE
  - install "Docker" and "Docker Compose"
  - docker-compose -f docker-compose.prod.yml up -d --build
 
