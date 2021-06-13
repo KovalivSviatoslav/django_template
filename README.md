@@ -16,7 +16,10 @@
  - create and fill dev.env or prod.env with .env.template 
  - docker-compose up -d --build
     - for dev version add "-f docker-compose.dev.yml" after "docker-compose"
-    - go into backend container and run ./manage.py migrate and so on...
+    - go into backend container and run ./manage.py migrate
+
+## TIPS
+ - use /docker catalog for nginx, redis, and so on...
 
 
 ## GIT STYLE
