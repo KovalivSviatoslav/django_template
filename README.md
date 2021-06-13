@@ -1,3 +1,5 @@
+# DJANGO PROJECT TEMPLATE
+
 ## Technologies
  - Python 3.9.5
  - Poetry 1.1.6
@@ -9,8 +11,9 @@
  - Postgres 13.3
  - NGINX 1.21.0
  
-## RUN THE PROJECT TEMPLATE
+## QUICKSTART
  - install "Docker" and "Docker Compose"
+ - create and fill dev.env or prod.env with .env.template 
  - docker-compose -f docker-compose.prod.yml up -d --build
 
 

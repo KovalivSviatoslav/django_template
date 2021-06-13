@@ -13,5 +13,6 @@ Thumbs.db
 *.env
 ### Project ###
 backend/staticfiles/*
-db_data
+backend/nginx_logs/*
+db_data/*
 todo.txt

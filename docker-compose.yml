@@ -37,6 +37,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./backend/staticfiles/:/staticfiles
+      - ./backend/nginx_logs/:/var/log/nginx
     depends_on:
       - backend
       - app_postgres
