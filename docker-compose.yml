@@ -35,6 +35,7 @@ services:
     build:
       context: ./docker/nginx
       dockerfile: Dockerfile
+    restart: always
     volumes:
       - ./backend/staticfiles/:/staticfiles
       - ./backend/nginx_logs/:/var/log/nginx
